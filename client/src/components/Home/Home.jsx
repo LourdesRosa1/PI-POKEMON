@@ -57,6 +57,7 @@ export default function Home () {
 
     return (
         <div>
+            <Link to='/pokemons'>Crear Pokemons</Link>
 
         <div>
             <h1>Pokemons</h1>

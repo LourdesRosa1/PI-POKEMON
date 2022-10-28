@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage';
 import Home from './components/Home/Home';
 import Details from './components/Details/Details';
+import PokemonCreate from './components/PokemonCreate/PokemonCreate';
 
 
 
@@ -13,7 +14,8 @@ function App() {
         <Switch>
           <Route exact path= '/' component= {LandingPage}/>
           <Route exact path='/home' component={Home}/>
-          <Route exact path="/details/:id" component={Details} />
+          <Route exact path='/details/:id' component={Details}/>
+          <Route exact path='/pokemons' component={PokemonCreate}/>
         </Switch>
       </div>
       </BrowserRouter>

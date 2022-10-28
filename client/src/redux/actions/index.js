@@ -46,6 +46,22 @@ export function getTypes() {
     }
 }
 
+//funcion para optener el post
+export function postPokemons (payload) {
+    return async function (dispatch) {
+        try{
+            const json= await axios.post('http://localhost:3001/pokemon', payload)
+            console.log(json)
+            return {
+                type:'POST_POKEMONS',
+                payload: json
+            }
+        } catch(erro) {
+            console.log(erro)
+        }
+    }
+}
+
 
 //-----filtro para obtener por tipo de pokemon-----
 export function filterByTypes(payload) {
