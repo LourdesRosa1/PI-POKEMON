@@ -14,7 +14,6 @@ useEffect(() => {
     dispatch(getPokemonById(id));
 }, [dispatch])
 
-
     return (
                 <div > 
                     {

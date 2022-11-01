@@ -12,11 +12,11 @@ export default function PokemonCreate () {
     const [input, setInput] = useState({
         name: "",
         hp: 0,
-        attack: 5,
-        defense: 5,
-        speed: 5,
-        height: 1,
-        weight: 1,
+        attack: 0,
+        defense: 0,
+        speed: 0,
+        height: 0,
+        weight: 0,
         img: "",
         types:[]
     })
@@ -25,45 +25,86 @@ export default function PokemonCreate () {
         dispatch(getTypes())
     }, [])
 
+    const handleOnChange = (e) => {
+        e.preventDefault()
+        
+        if (e.target.type === 'text') 
+          setInput({...input, [e.target.name]: e.target.value.toUpperCase()})
+    
+        else if (e.target.type === 'number')
+          setInput({...input, [e.target.name]: parseInt(e.target.value)})
+        
+        else setInput({...input, [e.target.name]: e.target.value})
+    }
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        dispatch(postPokemons(input))
+        alert('Pokemon Creado')
+        setInput({
+            name: "",
+            hp: 0,
+            attack: 0,
+            defense: 0,
+            speed: 0,
+            height: 0,
+            weight: 0,
+            img: "",
+            types:[]
+        })
+        history.push('/home') //me redirige a la ruta que yo digo
+
+      }
+
 
     return(
         <div>
             <Link to='/home'><button>Volver</button></Link>
             <h1>Crea tu personaje: </h1>
-            <form >
+            <form onSubmit={(e) => handleOnSubmit(e)} >
                 <div>
                     <label>Nombre: </label>
-                    <input type='text' value={input.name} name='name'/>
+                    <input type='text' value={input.name} name='name' onChange={(e) => handleOnChange(e)}/>
                 </div>
                 <div>
                 <label>HP: </label>
-                    <input type='number' value={input.hp} name='hp'/>
+                    <input type='number' value={input.hp} name='hp' onChange={(e) => handleOnChange(e)}/>
                 </div>
                 <div>
                 <label>Attack: </label>
-                    <input type='number' value={input.attack} name='attack'/>
+                    <input type='number' value={input.attack} name='attack' onChange={(e) => handleOnChange(e)}/>
                 </div>
                 <div>
                 <label>Defense: </label>
-                    <input type='number' value={input.defense} name='defense'/>
+                    <input type='number' value={input.defense} name='defense' onChange={(e) => handleOnChange(e)}/>
                 </div>
                 <div>
                 <label>Speed: </label>
-                    <input type='number' value={input.speed} name='speed'/>
+                    <input type='number' value={input.speed} name='speed' onChange={(e) => handleOnChange(e)}/>
                 </div>
                 <div>
                 <label>Height: </label>
-                    <input type='number' value={input.height} name='height'/>
+                    <input type='number' value={input.height} name='height' onChange={(e) => handleOnChange(e)}/>
                 </div>
                 <div>
                 <label>Weight: </label>
-                    <input type='number' value={input.weight} name='weight'/>
+                    <input type='number' value={input.weight} name='weight' onChange={(e) => handleOnChange(e)}/>
                 </div>
                 <div>
                 <label>Imagen: </label>
-                    <input type='text' value={input.img} name='img'/>
+                    <input type='text' value={input.img} name='img' onChange={(e) => handleOnChange(e)}/>
                 </div>
             </form>
+
+            <select>
+                {/* {
+                    allTypes?.map((e, i) => {
+                        <option key={i} value={e.name} >{e.name}</option>
+                    })
+                } */}
+            </select>
+            <button type='submit'>Crear Pokemon</button>
+            
         </div>
     )
 }

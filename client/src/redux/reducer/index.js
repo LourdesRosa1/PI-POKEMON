@@ -27,27 +27,35 @@ function rootReducer(state=initielState, action) {
             }
 
             case "FILTER_BY_TYPES":
-                let pokemons = state.allPokemons;
-                let filterType = action.payload === 'type' ? pokemons : pokemons.filter((e)=> e.types?.includes(action.payload));
+                const pokemons = state.allPokemons;
+                const filterType = action.payload === 'type' ? pokemons : pokemons.filter((e)=> e.types?.includes(action.payload));
                 return{
                     ...state,
                     pokemons: filterType
             };
 
+            case 'FILTER_BY_CREATED':
+                //let pokemonsCreated = state.allPokemons;
+                //const createFilter= action.payload === 'Created' ? pokemonsCreated.filter((e) => e.create) : pokemonsCreated.filter((e) => !e.create)
+                return{
+                    ...state,
+                    pokemons: action.payload === 'All' ? state.allPokemons : state.pokemons.filter(p=>isNaN(p.id))
+                }
+
             case 'ORDER_BY_NAME':
-                let sortedArray = action.payload === 'asc' ?  state.pokemons.sort((a, b) => {
-                if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                const sortedArray = action.payload === 'asc' ?  state.pokemons.sort((a, b) => {
+                if (a.name.toUpperCase() > b.name.toUpperCase()) {
                 return 1;
             }
-                if (b.name.toLowerCase() > a.name.toLowerCase()) {
+                if (b.name.toUpperCase() > a.name.toUpperCase()) {
                 return -1;
             }
                 return 0;
                 }) : state.pokemons.sort((a, b) => {
-                if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                if (a.name.toUpperCase() > b.name.toUpperCase()) {
                 return -1;
             }
-                if (b.name.toLowerCase() > a.name.toLowerCase()) {
+                if (b.name.toUpperCase() > a.name.toUpperCase()) {
                 return 1;
             }
                 return 0;
@@ -75,6 +83,12 @@ function rootReducer(state=initielState, action) {
                 ...state,
                 detail:action.payload
             }
+
+            case 'POST_POKEMONS':
+                return{
+                    ...state,
+
+                }
 
 
             default: 

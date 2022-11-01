@@ -71,6 +71,13 @@ export function filterByTypes(payload) {
     }
 }
 
+//----Filtro por pokemon vreado-----
+export function filterByCreated(payload) {
+    return {
+        type: 'FILTER_BY_CREATED',
+        payload
+    }
+}
 
 //------------Ordenar nombre as y des ------------
 export function orderByName (payload) {

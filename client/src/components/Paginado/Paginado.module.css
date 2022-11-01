@@ -1,0 +1,25 @@
+.buttons {
+    --size: 32px;
+    --margin: 6px;
+    margin: 0 var(--margin);
+    border-radius: 6px;
+    background: #598392;
+    min-width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .buttons:hover {
+    background: #aec3b0;
+  }
+  
+  .paginado {
+    display: flex;
+    justify-content: center;
+  }

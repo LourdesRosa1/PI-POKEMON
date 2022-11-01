@@ -1,11 +1,12 @@
 import React from "react";
 import {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, getTypes, filterByTypes, orderByName, orderByAttack} from "../../redux/actions/index.js";
+import { getPokemons, getTypes, filterByTypes, orderByName, orderByAttack, filterByCreated} from "../../redux/actions/index.js";
 import Card from "../Card/Card.jsx";
 import Paginado from "../Paginado/Paginado.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import { Link } from 'react-router-dom';
+import style from './Home.module.css'
 
 export default function Home () {
     const dispatch= useDispatch();
@@ -37,7 +38,14 @@ export default function Home () {
 
 
     function handleFilterByType(e) {
+        e.preventDefault();
         dispatch(filterByTypes(e.target.value))
+        setCurrentPage(1);
+    }
+
+    function handleFilterByCreate(e) {
+        e.preventDefault();
+        dispatch(filterByCreated(e.target.value))
         setCurrentPage(1);
     }
 
@@ -56,13 +64,19 @@ export default function Home () {
     }
 
     return (
-        <div>
+        <div className={style.home}>
             <Link to='/pokemons'>Crear Pokemons</Link>
 
         <div>
             <h1>Pokemons</h1>
             <button onClick={e => {handleClick(e)}}>Cargar Pokemons</button>
         </div>
+
+        <h3>Creados :</h3>
+        <select onChange={e => handleFilterByCreate(e)}>
+            <option value='All'>Todos</option>
+            <option value='Created'>Creados</option>
+        </select>
 
         <h3 >Orden :</h3>
         <select onChange={e => handleSort(e)}>
