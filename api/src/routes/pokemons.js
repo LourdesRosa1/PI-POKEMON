@@ -12,7 +12,7 @@ router.get('/pokemons', async (req, res) => {
         const pokemons= await allPokeInfo();
         if (name) {
             const pokeByName= pokemons?.filter(
-                (p) => p.name.toLowerCase() === name.toLowerCase()
+                (p) => p.name.toUpperCase() === name.toUpperCase()
               );
               pokeByName.length > 0 ? res.status(200).json(pokeByName) : res.json([]);
             } else {
