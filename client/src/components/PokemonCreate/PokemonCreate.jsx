@@ -25,7 +25,7 @@ export default function PokemonCreate () {
         dispatch(getTypes())
     }, [])
 
-    const handleOnChange = (e) => {
+    const handleOnChange= (e) => {
         e.preventDefault()
         
         if (e.target.type === 'text') 
@@ -53,8 +53,8 @@ export default function PokemonCreate () {
             types:[]
         })
         history.push('/home') //me redirige a la ruta que yo digo
+    }
 
-      }
 
 
     return(
@@ -96,13 +96,7 @@ export default function PokemonCreate () {
                 </div>
             </form>
 
-            <select>
-                {/* {
-                    allTypes?.map((e, i) => {
-                        <option key={i} value={e.name} >{e.name}</option>
-                    })
-                } */}
-            </select>
+            
             <button type='submit'>Crear Pokemon</button>
             
         </div>

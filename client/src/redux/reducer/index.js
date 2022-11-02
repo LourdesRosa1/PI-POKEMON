@@ -28,11 +28,20 @@ function rootReducer(state=initielState, action) {
 
             case "FILTER_BY_TYPES":
                 const pokemons = state.allPokemons;
-                const filterType = action.payload === 'type' ? pokemons : pokemons.filter((e)=> e.types?.includes(action.payload));
+                const filterType =  action.payload === 'type' ? pokemons : pokemons.filter(e => {
+                    let tipos='';
+                    for (let i=0; i<e.types.length; i++) {
+                        if(e.types[i] === action.payload.toLowerCase()) {
+                            tipos=e.types[i]
+                        }
+                    }
+                    return tipos
+                })
                 return{
                     ...state,
                     pokemons: filterType
             };
+
 
             case 'FILTER_BY_CREATED':
                 //let pokemonsCreated = state.allPokemons;
