@@ -12,7 +12,7 @@ export default function Home () {
     const dispatch= useDispatch();
 
     const allPokemons=useSelector((state) => state.pokemons);
-   const alltypes=useSelector((state) => state.types)
+    const alltypes=useSelector((state) => state.types)
 
     let [orden, setOrden] = useState('')
 
@@ -65,12 +65,10 @@ export default function Home () {
 
     return (
         <div className={style.home}>
-            <Link to='/pokemons'>Crear Pokemons</Link>
-
-        <div>
+        
             <h1>Pokemons</h1>
             <button onClick={e => {handleClick(e)}}>Cargar Pokemons</button>
-        </div>
+        
 
         <h3>Creados :</h3>
         <select onChange={e => handleFilterByCreate(e)}>
@@ -92,7 +90,7 @@ export default function Home () {
 
         <h2>Types :</h2>
         <select onChange={e => handleFilterByType(e)}>
-            <option value='type'>Todos</option>
+            {/* <option value='type'>Todos</option>
             <option value="normal">Normal</option>
             <option value="fighting">Fighting</option>
             <option value="flying">Flying</option>
@@ -112,12 +110,13 @@ export default function Home () {
             <option value="dark">Dark</option>
             <option value="fairy">Fairy</option>
             <option value="unknown">Unknown</option>
-            <option value="shadow">Shadow</option>
-            {/* {
+            <option value="shadow">Shadow</option> */}
+            {
+                alltypes.length &&
             alltypes.map(type => (
             <option value={type.name} key={type.id}>{type.name}</option>
             ))
-        } */}
+        }
         </select>
 
 
