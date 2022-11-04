@@ -4,4 +4,22 @@
     width: 100%;
   }
 
+  .hola{
+    display:grid;
+    grid-template-columns: repeat(4, 8fr);
+    align-content: center;
+    align-items:center;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 100px;
+  }
+
+  .filtros{
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #faedcd;
+}
+
   /* background-image: url('./home.jpg'); */

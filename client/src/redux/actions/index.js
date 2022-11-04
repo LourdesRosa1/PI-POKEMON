@@ -52,10 +52,10 @@ export function postPokemons (payload) {
         try{
             const json= await axios.post('http://localhost:3001/pokemon', payload)
             console.log(json)
-            return {
+            return dispatch ({
                 type:'POST_POKEMONS',
-                payload: json
-            }
+                
+            })
         } catch(erro) {
             console.log(erro)
         }

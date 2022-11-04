@@ -1,15 +1,14 @@
 .container{
-    
     width: 265px;
     height: 400px;
     border-radius: 10px;
     position: relative;
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.38); 
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.38);
-    display: inline-block;;
+    display: flex;
     align-content: center;
-    flex-direction: column;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    justify-content: center;
 }
 
 .container:hover  {

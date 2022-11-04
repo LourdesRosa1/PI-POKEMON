@@ -65,30 +65,34 @@ export default function Home () {
 
     return (
         <div className={style.home}>
-        
             <h1>Pokemons</h1>
-            <button onClick={e => {handleClick(e)}}>Cargar Pokemons</button>
-        
 
-        <h3>Creados :</h3>
+            <div>
+            <button onClick={e => {handleClick(e)}}>Cargar Pokemons</button>
+            <h6> </h6>
+            </div>
+
+        <div className={style.filtros}>
+            < hr/>
+        <h3>Creados : </h3>
         <select onChange={e => handleFilterByCreate(e)}>
             <option value='All'>Todos</option>
             <option value='Created'>Creados</option>
         </select>
-
-        <h3 >Orden :</h3>
+        < hr/>
+        <h3 >Orden : </h3>
         <select onChange={e => handleSort(e)}>
             <option value='asc'>A - Z</option>
             <option value='desc'>Z - A</option>
         </select>
-
-        <h3>Atack :</h3>
+        < hr/>
+        <h3>Atack : </h3>
         <select onClick={e => handleByAttack(e)}>
         <option value="atkH">Ataque más alto</option>
         <option value="atkL">Ataque más bajo</option>
         </select>
-
-        <h2>Types :</h2>
+        < hr/>
+        <h2>Types : </h2>
         <select onChange={e => handleFilterByType(e)}>
             {/* <option value='type'>Todos</option>
             <option value="normal">Normal</option>
@@ -118,6 +122,9 @@ export default function Home () {
             ))
         }
         </select>
+        < hr/>
+        </div>
+        
 
 
         <Paginado
@@ -127,9 +134,13 @@ export default function Home () {
         paginado={paginado}
         />
         <SearchBar/>
+
+        <div className={style.hola}>
         {
             currentPoke?.map((e) =>{
                 return (
+
+                    <div className={style.card}>
                     <div key={e.id}>
                         <Link to={'/details/' + e.id}>
                         <Card
@@ -141,9 +152,12 @@ export default function Home () {
                         />
                         </Link>
                     </div>
+
+                    </div>
                 )
             })
         }
+        </div>
 
         </div>
     )

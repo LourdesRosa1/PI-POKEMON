@@ -96,7 +96,6 @@ function rootReducer(state=initielState, action) {
             case 'POST_POKEMONS':
                 return{
                     ...state,
-
                 }
 
 
