@@ -44,11 +44,11 @@ function rootReducer(state=initielState, action) {
 
 
             case 'FILTER_BY_CREATED':
-                //let pokemonsCreated = state.allPokemons;
-                //const createFilter= action.payload === 'Created' ? pokemonsCreated.filter((e) => e.create) : pokemonsCreated.filter((e) => !e.create)
+                
+                const createFilter= action.payload === 'All' ? state.allPokemons : state.pokemons.filter(p=>isNaN(p.id))
                 return{
                     ...state,
-                    pokemons: action.payload === 'All' ? state.allPokemons : state.pokemons.filter(p=>isNaN(p.id))
+                    pokemons: createFilter
                 }
 
             case 'ORDER_BY_NAME':

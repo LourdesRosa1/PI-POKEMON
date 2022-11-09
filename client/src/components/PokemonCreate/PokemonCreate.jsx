@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTypes, postPokemons} from '../../redux/actions/index.js';
-
+import style from './Create.module.css'
+import video from '../Home/video.mp4';
 
 function validate(input){
     let errors = {};
@@ -107,20 +108,19 @@ export default function PokemonCreate () {
         console.log(input)
     }
 
-    let handleDelete = (e) => {
-        setInput({
-            ...input,
-            types: input.types.filter(eachOne => eachOne !== e)
-        })
-}
-
-
-
     return(
-        <div>
+        <div >
+            <video className={style.video} muted autoPlay loop>
+			<source src={video} type="video/mp4" />
+			</video>
+            <h1> </h1>
             <Link to='/home'><button>Volver</button></Link>
             <h1>Crea tu personaje: </h1>
-            <form onSubmit={(e) => handleOnSubmit(e)} >
+            <div >
+                <h1> </h1>
+            </div>
+            <div className={style.create}>
+            <form className={style.content} onSubmit={(e) => handleOnSubmit(e)} >
                 <div>
                     <label>Nombre: </label>
                     <input type='text' value={input.name} name='name'  placeholder='Nombre...' onChange={(e) => handleOnChange(e)}/>
@@ -168,17 +168,12 @@ export default function PokemonCreate () {
                         })
                         }
                 </select>    
-                {input.types?.map((e,i)=>{
-                    return <span key = {i}> {e}
-                    <button onClick={()=>handleDelete(e)}>X</button>
-                    </span>
-                })}            
                 <li>{input.types?.map(e => e + ',')}</li>
-                
-                
-            <button type="submit" > Crear Pokemon </button>
+            <button className={style.button} type="submit" > Crear Pokemon </button>
             </form>
-            
+            </div>
         </div>
     )
 }
+
+

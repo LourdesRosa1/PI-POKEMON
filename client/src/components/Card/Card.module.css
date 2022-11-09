@@ -18,7 +18,7 @@
 .name{
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
-    color: #060606;
+    color: #ffff05;
     margin-bottom: auto;
     
 }
@@ -30,7 +30,7 @@
 }
 
 .image{
-    background-color: #cfe1b9;
+    background-color: #c9ada7;
     width: 95%;
     margin-left: 7px;
     height: 255px;
@@ -46,6 +46,6 @@
     font-family: 'Open Sans', sans-serif;
     margin: unset;
     padding: 1px;
-    color: black;
+    color: #ee9b00;
     text-transform: uppercase;
 }

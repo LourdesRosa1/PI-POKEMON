@@ -13,8 +13,8 @@ function App() {
     return (
       <BrowserRouter>
       <React.Fragment>
-      <div className="App">
           <NavBar />
+      <div className="App">
           <Route exact path= '/' component= {LandingPage}/>
           <Route exact path='/home' component={Home}/>
           <Route exact path='/details/:id' component={Details}/>
