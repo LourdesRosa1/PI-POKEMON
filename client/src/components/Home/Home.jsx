@@ -12,10 +12,12 @@ import video from './video.mp4';
 export default function Home () {
     const dispatch= useDispatch();
 
-    const allPokemons=useSelector((state) => state.pokemons);
+    var allPokemons=useSelector((state) => state.pokemons);
     const alltypes=useSelector((state) => state.types)
 
     let [orden, setOrden] = useState('')
+    // let[currentPoke,setCurrentPoke]=useState([])
+    
 
     const[currentPage,setCurrentPage]=useState(1);
     const[pokemonPerPage]=useState(12)
@@ -23,9 +25,17 @@ export default function Home () {
     const indexOfFirstPoke= indeOfLastPoke - pokemonPerPage;
     const currentPoke=allPokemons.slice(indexOfFirstPoke, indeOfLastPoke)
 
+    console.log('hola', allPokemons)
+    // useEffect(() => {
+    //     setCurrentPoke(allPokemons.slice(indexOfFirstPoke, indeOfLastPoke))
+    // },[])
+
     const paginado=pageNumber => {
         setCurrentPage(pageNumber)
     }
+    useEffect(() => {
+        paginado(1);
+    },[allPokemons])
 
     useEffect(() => {
         dispatch(getTypes());
@@ -119,7 +129,7 @@ export default function Home () {
         <SearchBar/>
 
         <div className={style.hola}>
-        {
+        { 
             currentPoke?.map((e) =>{
                 return (
 

@@ -16,9 +16,11 @@ export default function SearchBar() {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(getPokemonByName(name))
+        dispatch()
         setName("");
-    }
+        console.log(name)
 
+    }
 
     return (
     <div>
@@ -31,6 +33,7 @@ export default function SearchBar() {
         <button type="submit" onClick={(e) => handleSubmit(e)}>
             Buscar
         </button>
+        
 
     </div>
     )

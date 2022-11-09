@@ -15,9 +15,13 @@ function rootReducer(state=initielState, action) {
             }
 
         case 'GET_POKEMON_BY_NAME':
+            console.log(action.payload)
+            let result=[...action.payload]
+            console.log(result)
             return{
                 ...state,
-                pokemons:action.payload
+                pokemons:result
+            
             }
 
         case "GET_TYPES":
