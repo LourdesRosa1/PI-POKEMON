@@ -15,7 +15,7 @@ export default function Paginado({pokemonPerPage, allPokemons, currentPage, pagi
                 key={number}
                 onClick={() => paginado(number)}
             >
-            {currentPage === number ? <b>{number}</b> : number}
+            {number}
             </button>
             ))}
             
