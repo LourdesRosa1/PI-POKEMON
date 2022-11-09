@@ -29,13 +29,10 @@ router.get('/pokemons/:id', async (req, res) => {
     const {id}=req.params;
     try {
         const pokemonsTodos= await allPokeInfo();
-         
             let pokemosId=  pokemonsTodos.filter( (e) => e.id == id)
             pokemosId.length?
             res.status(200).send(pokemosId) :
             res.status(404).send("No existe ese Pokemon")
-        
-    
     } catch(error) {
     console.log(error);
     }
