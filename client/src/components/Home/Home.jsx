@@ -114,7 +114,6 @@ export default function Home () {
         <Paginado
         pokemonPerPage={pokemonPerPage}
         allPokemons={allPokemons.length}
-        currentPage={currentPage}
         paginado={paginado}
         />
         <SearchBar/>
