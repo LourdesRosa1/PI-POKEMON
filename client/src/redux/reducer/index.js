@@ -42,6 +42,13 @@ function rootReducer(state=initielState, action) {
                     pokemons: filterType
             };
 
+            case 'DELETE_TYPE':
+                const delet= state.types.filter(el => el.id!==action.payload)
+                return{
+                    ...state,
+                    types: delet
+                }
+
 
             case 'FILTER_BY_CREATED':
                 

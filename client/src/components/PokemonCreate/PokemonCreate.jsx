@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTypes, postPokemons} from '../../redux/actions/index.js';
+import { getTypes, postPokemons, deleteType} from '../../redux/actions/index.js';
 import style from './Create.module.css'
 import video from '../Home/video.mp4';
 
@@ -87,9 +87,8 @@ export default function PokemonCreate () {
         sertErrors(validate( {
             ...input,
             types: [...input.types, e.target.value],
-          }))
-
-}
+        }))
+        }
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
@@ -167,7 +166,7 @@ export default function PokemonCreate () {
                             return <option key ={i} value={type.name} >{type.name}</option>
                         })
                         }
-                </select>    
+                </select> 
                 <li>{input.types?.map(e => e + ',')}</li>
             <button className={style.button} type="submit" > Crear Pokemon </button>
             </form>
